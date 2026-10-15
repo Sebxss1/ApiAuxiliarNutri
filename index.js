@@ -5,6 +5,7 @@ const connection = require("./config/dbConfig");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./config/swagger");
 const categoriaRoutes = require("./routes/categoriaRoutes");
+const contenidoRoutes = require("./routes/contenidoRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,6 +13,8 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use("/categorias", categoriaRoutes);
+app.use("/contenidos", contenidoRoutes);
+
 
 app.get("/", (req, res) => {
   res.json({
